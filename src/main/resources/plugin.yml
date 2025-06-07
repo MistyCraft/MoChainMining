@@ -1,0 +1,15 @@
+name: MoChainMining
+version: '1.0-SNAPSHOT'
+main: top.molab.minecraft.moChainMining.MoChainMining
+api-version: '1.21'
+prefix: MCM
+load: STARTUP
+authors: [ Moran0710 ]
+description: A Simple Chain Mining Plugin
+website: openmo.molab.top
+commands:
+  chainmine:
+    description: Chain Mining Command
+    usage: /chainmine <of/off/toggle>
+    permission: MoChainMining.command
+    aliases: [ chain-mine, cm ]
