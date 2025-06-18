@@ -6,7 +6,10 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.checkerframework.checker.units.qual.N;
+import top.molab.minecraft.moChainMining.breakBehavior.NormalBreakBehavior;
 import top.molab.minecraft.moChainMining.chain.IBlockChain;
+import top.molab.minecraft.moChainMining.chain.RecursiveBlockChain;
 import top.molab.minecraft.moChainMining.factory.BlockChainFactory;
 
 import java.util.ArrayList;
@@ -73,7 +76,7 @@ public class ConfigManager {
     }
 
     public IBlockChain getBlockChain(Block block){
-        return BlockChainFactory.makeBlockChain(this.chainType,this.breakBehaviorType, block );
+        return new RecursiveBlockChain(block, new NormalBreakBehavior());
     }
 
     public FileConfiguration getConfig() {
@@ -124,7 +127,7 @@ public class ConfigManager {
         this.checkPermission = config.getBoolean("permissions.disable-on-lack-permission");
 
         // 载入连锁模式
-        this.chainType = "";
+
         this.breakBehaviorType = config.getString("global.drop-mode");
 
         this.config = config;
